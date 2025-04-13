@@ -3,7 +3,7 @@ Defines the Scoreboard() class which tracks and displays a players score.
 """
 from typing import Dict
 import pygame
-from common import SCREEN, BLACK, WIDTH, HEIGHT, WHITE, FONT, i_to_md
+from common import SCREEN, BLACK, WIDTH, HEIGHT, WHITE, FONT, int_to_mini_die
 
 
 class Scorecard:
@@ -68,7 +68,7 @@ class Scorecard:
                 x = self.x + 400
                 # noinspection PyTypeChecker
                 for idx, n in enumerate(self.throws[category]):
-                    SCREEN.blit(i_to_md[n], (x + idx * 40, self.y + i * 40))
+                    SCREEN.blit(int_to_mini_die[n], (x + idx * 40, self.y + i * 40))
 
         sub_text = f"Upper section subtotal: {self.upper_sub}  (+/- {self.__calc_plus_minus_s()})"
         t = FONT.render(sub_text, True, BLACK)
