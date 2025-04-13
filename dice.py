@@ -3,7 +3,7 @@ Defines the Dice() class responsible for rolling and displaying dice
 """
 from random import randint
 import pygame
-from common import SCREEN, POOL_TABLE_GREEN, RED, pause, i_to_d
+from common import SCREEN, POOL_TABLE_GREEN, RED, pause, int_to_die
 
 
 class Dice:
@@ -62,14 +62,14 @@ class Dice:
 
         for k, v in self.slots.items():
             if v[1]:
-                rect = SCREEN.blit(i_to_d[v[2]], d_pos[k])
+                rect = SCREEN.blit(int_to_die[v[2]], d_pos[k])
                 v[0] = rect
                 pygame.draw.rect(SCREEN, RED, rect, 5)
         pygame.display.flip()
         for k, v in self.slots.items():
             if not v[1]:
                 pause(1000)
-                rect = SCREEN.blit(i_to_d[v[2]], d_pos[k])
+                rect = SCREEN.blit(int_to_die[v[2]], d_pos[k])
                 v[0] = rect
                 pygame.display.flip()
 
@@ -82,7 +82,7 @@ class Dice:
         new_slots = {}
         for i, die in enumerate(self.rolled):
             # Draw the die and get its rect.
-            rect = SCREEN.blit(i_to_d[die], (x, 100))
+            rect = SCREEN.blit(int_to_die[die], (x, 100))
             # Preserve selection state if already exists; otherwise default to False.
             if i + 1 in self.slots:
                 new_slots[i + 1] = [rect, self.slots[i + 1][1]]
