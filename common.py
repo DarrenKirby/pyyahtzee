@@ -37,10 +37,10 @@ HS_FILE = "high_score.txt"
 
 # Human and bot images
 hum = pygame.image.load("assets/human.png")
-HUM = pygame.transform.scale(hum, (400, 400))
+HUMAN_IMAGE = pygame.transform.scale(hum, (400, 400))
 
 bot = pygame.image.load("assets/robot.png")
-BOT = pygame.transform.scale(bot, (400, 400))
+BOT_IMAGE = pygame.transform.scale(bot, (400, 400))
 
 # Button
 BUTTON_WIDTH, BUTTON_HEIGHT = 150, 60
@@ -69,7 +69,7 @@ MD5 = pygame.transform.scale(d5, (DS, DS))
 MD6 = pygame.transform.scale(d6, (DS, DS))
 
 # Dice int to image mapping
-i_to_d = {
+int_to_die = {
     1: D1,
     2: D2,
     3: D3,
@@ -78,7 +78,7 @@ i_to_d = {
     6: D6
 }
 
-i_to_md = {
+int_to_mini_die = {
     1: MD1,
     2: MD2,
     3: MD3,
