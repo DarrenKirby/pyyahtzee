@@ -7,7 +7,7 @@ from dice import Dice
 from scorecard import Scorecard
 from button import Button
 from common import BUTTON_WIDTH, BUTTON_HEIGHT, FONT, WHITE, SCREEN, POOL_TABLE_GREEN
-from common import HUM, BOT, HS_FILE, MAX_ROUNDS, RED, pause, BLACK, WIDTH, AI_TURN_DELAY
+from common import HUMAN_IMAGE, BOT_IMAGE, HS_FILE, MAX_ROUNDS, RED, pause, BLACK, WIDTH, AI_TURN_DELAY
 
 # pylint: disable=no-member
 pygame.init()
@@ -325,8 +325,8 @@ class MainLoop(PlayerTurn):
             question_surface = FONT.render(question, True, BLACK)
             SCREEN.blit(question_surface, (50, 50))
 
-            hum_rect = SCREEN.blit(HUM, (200, 300))
-            bot_rect = SCREEN.blit(BOT, (700, 300))
+            hum_rect = SCREEN.blit(HUMAN_IMAGE, (200, 300))
+            bot_rect = SCREEN.blit(BOT_IMAGE, (700, 300))
             hs_button.draw(pos)
             pygame.display.flip()
 
