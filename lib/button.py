@@ -2,7 +2,7 @@
 Defines class Button() which prints a text button to the screen.
 """
 import pygame
-from common import BLUE, DARK_GRAY, SCREEN, DARK_BLUE, LIGHT_GRAY, WHITE, FONT
+from .ui_common import BLUE, DARK_GRAY, SCREEN, DARK_BLUE, LIGHT_GRAY, WHITE, FONT
 
 
 class Button:
@@ -59,6 +59,7 @@ class Button:
             self.pressed = True
         elif event.type == pygame.MOUSEBUTTONUP:
             if self.pressed and self.is_hovered(m_pos):
+                self.pressed = False
                 return True
             self.pressed = False
         return False
