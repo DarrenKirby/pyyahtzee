@@ -11,14 +11,14 @@ class ScorecardUI:
     """
     Visual representation of a scorecard
     """
-    
+
     def __init__(self, x: int, y: int, scorecard_logic: ScorecardLogic):
         self.x = x
         self.y = y
         self.scorecard_logic = scorecard_logic
         # Keep track of rectangles for hit detection
         self.category_rects = {}
-    
+
     def draw(self) -> None:
         """
         Draws a scorecard to the screen.
@@ -39,21 +39,21 @@ class ScorecardUI:
         # Print total score
         text = name_font.render(str(self.scorecard_logic.total_score), True, BLACK)
         SCREEN.blit(text, (self.x + 575, self.y - 60))
-        
+
         # Print score for each category
         for i, category in enumerate(self.scorecard_logic.scores):
             score = self.scorecard_logic.scores[category]
             category_text = FONT.render(category, True, WHITE)
             score_text = FONT.render(str(score) if score is not None else "-", True, WHITE)
-            
+
             # Store the rectangle for this category for hit detection
             category_rect = pygame.Rect(self.x, self.y + i * 40, 300, 40)
             self.category_rects[category] = category_rect
-            
+
             # Draw the category and score
             SCREEN.blit(category_text, (self.x, self.y + i * 40))
             SCREEN.blit(score_text, (self.x + 200, self.y + i * 40))
-            
+
             # Print the 'mini dice'
             if score is not None and self.scorecard_logic.throws[category] is not None:
                 x = self.x + 400
@@ -64,11 +64,11 @@ class ScorecardUI:
         sub_text = f"Upper section subtotal: {self.scorecard_logic.upper_sub}  (+/- {self.scorecard_logic.calc_plus_minus_str()})"
         t = FONT.render(sub_text, True, BLACK)
         SCREEN.blit(t, (self.x, self.y + 530))
-        
+
         sub_text = f"Lower section subtotal: {self.scorecard_logic.lower_sub}"
         t = FONT.render(sub_text, True, BLACK)
         SCREEN.blit(t, (self.x, self.y + 560))
-    
+
     def is_category_clicked(self, pos: Tuple[int, int], category: str) -> bool:
         """
         Checks if a category was clicked
